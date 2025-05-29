@@ -22,7 +22,7 @@ export default function LayoutHeader() {
         {
             key: 2,
             icon: <LogoutOutlined />,
-            label: 'Вихід',
+            label: 'Logout',
             danger: true,
             onClick: () => {
                 authService.logout();
