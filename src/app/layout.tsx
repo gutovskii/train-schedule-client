@@ -3,6 +3,7 @@ import "./globals.css";
 import 'antd/dist/reset.css';
 import ReactQueryProvider from "@/lib/ReactQueryProvider";
 import AntdProvider from "@/lib/AntdProvider";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Kevych Trail Scheduler",
@@ -17,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        <ReactQueryProvider>
-          <AntdProvider>
-            {children}
-          </AntdProvider>
-        </ReactQueryProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ReactQueryProvider>
+            <AntdProvider>
+              {children}
+            </AntdProvider>
+          </ReactQueryProvider>
+        </Suspense>
       </body>
     </html>
   );
